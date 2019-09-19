@@ -35,7 +35,7 @@
 .stuCreateTimeUpdate, .stuGradeUpdate, .stuSubjectUpdate {
     margin-top: 10px;
 }
-.teaNum,.teaName,#teaForm,
+.teaNum,.teaName,#teaForm,.teaPosition,#teaEditForm,
 .teaBirthday,.teaMobile,.teaMobile,
 .teaQQ,.teaInDate,.teaCreateDate {
     margin-top: 10px;

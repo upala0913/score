@@ -106,4 +106,8 @@
         INSERT INTO teacher (<include refid="teaKey" />) VALUE (<include refid="teaValue" />)
     </insert>
 
+    <select id="queryTeacher" parameterType="String" resultMap="resTeaMap" >
+        SELECT * FROM teacher WHERE tea_num = #{teaNum}
+    </select>
+
 </mapper>
