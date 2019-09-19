@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wong.upala.ai.mapper.StudentMapper">
+
+    <!-- 返回值 -->
+    <resultMap id="resultMap" type="com.wong.upala.ai.entity.Student">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <id column="stu_num" jdbcType="VARCHAR" property="stuNum"/>
+        <id column="stu_name" jdbcType="VARCHAR" property="stuName"/>
+        <id column="stu_sex" jdbcType="VARCHAR" property="stuSex"/>
+        <id column="stu_birthday" jdbcType="DATE" property="stuBirthday"/>
+        <id column="stu_qq" jdbcType="VARCHAR" property="stuQQ"/>
+        <id column="stu_mobile" jdbcType="VARCHAR" property="stuMobile"/>
+        <id column="stu_create_time" jdbcType="DATE" property="stuCreateTime"/>
+        <id column="stu_grade" jdbcType="VARCHAR" property="stuGrade"/>
+        <id column="stu_subject" jdbcType="VARCHAR" property="stuSubject"/>
+    </resultMap>
+
+    <!-- 查询 -->
+    <select id="queryStudentByNum" parameterType="java.lang.String" resultMap="resultMap">
+        SELECT * FROM student WHERE stu_num = #{stuNum, jdbcType=VARCHAR}
+    </select>
+
+    <!-- 查询学生 -->
+    <select id="queryStudent" parameterType="int" resultMap="resultMap">
+        SELECT * FROM student LIMIT #{start}, #{limit}
+    </select>
+
+    <!-- 查询总数 -->
+    <select id="getTotal" resultType="int">
+        SELECT COUNT(*) FROM student
+    </select>
+
+    <!-- sql片段 -->
+    <sql id="key">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="stuNum != null">
+                stu_num,
+            </if>
+            <if test="stuName != null">
+                stu_name,
+            </if>
+            <if test="stuSex != null">
+                stu_sex,
+            </if>
+            <if test="stuBirthday != null">
+                stu_birthday,
+            </if>
+            <if test="stuQQ != null">
+                stu_qq,
+            </if>
+            <if test="stuMobile != null">
+                stu_mobile,
+            </if>
+            <if test="stuCreateTime != null">
+                stu_create_time,
+            </if>
+            <if test="stuGrade != null">
+                stu_grade,
+            </if>
+            <if test="stuSubject != null">
+                stu_subject,
+            </if>
+        </trim>
+    </sql>
+    <sql id="value">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="stuNum != null">
+                #{stuNum},
+            </if>
+            <if test="stuName != null">
+                #{stuName},
+            </if>
+            <if test="stuSex != null">
+                #{stuSex},
+            </if>
+            <if test="stuBirthday != null">
+                #{stuBirthday},
+            </if>
+            <if test="stuQQ != null">
+                #{stuQQ},
+            </if>
+            <if test="stuMobile != null">
+                #{stuMobile},
+            </if>
+            <if test="stuCreateTime != null">
+                #{stuCreateTime},
+            </if>
+            <if test="stuGrade != null">
+                #{stuGrade},
+            </if>
+            <if test="stuSubject != null">
+                #{stuSubject},
+            </if>
+        </trim>
+    </sql>
+    <!-- 新增学生 -->
+    <insert id="addStudent" parameterType="com.wong.upala.ai.entity.Student" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO student (<include refid="key"/>) VALUES (<include refid="value"/>)
+    </insert>
+
+    <!-- 查询学生通过属性 -->
+    <select id="queryByColumn" parameterType="String" resultMap="resultMap">
+        SELECT * FROM student
+        <where>
+            <if test="stuNum != null and stuNum != ''">
+                stu_num=#{stuNum}
+            </if>
+            <if test="stuName != null and stuName != ''">
+                AND stu_name=#{stuName}
+            </if>
+            <if test="stuQQ != null and stuQQ != ''">
+                AND stu_qq=#{stuQQ}
+            </if>
+            <if test="stuMobile != null and stuMobile != ''">
+                AND stu_mobile=#{stuMobile}
+            </if>
+            <if test="stuGrade != null and stuGrade != ''">
+                AND stu_grade=#{stuGrade}
+            </if>
+            <if test="stuSubject != null and stuSubject != ''">
+                AND stu_subject=#{stuSubject}
+            </if>
+        </where>
+    </select>
+
+    <!-- 删除 -->
+    <delete id="deleteStudent" parameterType="String">
+        DELETE FROM student
+        <where>
+            <if test="stuNum != null and stuNum != ''">
+                stu_num = #{stuNum}
+            </if>
+        </where>
+    </delete>
+
+    <!-- 修改学生信息 -->
+    <update id="updateStudent" parameterType="com.wong.upala.ai.entity.Student" useGeneratedKeys="true"
+            keyProperty="id">
+        UPDATE student SET
+        <if test="stuName != null and stuName != ''" >
+            stu_name=#{stuName},
+        </if>
+        <if test="stuQQ != null and stuQQ != ''" >
+            stu_qq=#{stuQQ},
+        </if>
+        <if test="stuQQ != null and stuQQ != ''" >
+            stu_mobile=#{stuMobile},
+        </if>
+        <if test="stuGrade != null and stuGrade != ''" >
+            stu_grade=#{stuGrade},
+        </if>
+        <if test="stuSubject != null and stuSubject != ''" >
+            stu_subject=#{stuSubject}
+        </if>
+        <where>
+            <if test="stuNum != null and stuNum != ''" >
+                stu_num=#{stuNum}
+            </if>
+        </where>
+    </update>
+
+</mapper>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>教师管理</title>
+</head>
+<body>
+<script type="text/javascript" src="/static/js/manage/teacher.js" ></script>
+<table id="teaDataGrid" ></table>
+
+<!-- 显示新增窗口 -->
+<div id="teaAddWin" class="easyui-window" title="增加"
+     data-options="iconCls:'icon-save', closed:true, modal: true, resizable: false"
+     style="width:350px;height:430px;padding:5px;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding:10px;">
+            <div class="teaNum" >
+                <label for="teaNum">工号：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="teaNum" class="easyui-textbox"/>
+            </div>
+            <div class="teaName" >
+                <label for="teaName">姓名：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="teaName" class="easyui-textbox"/>
+            </div>
+            <form id="teaForm">
+                性别：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="teaSexMan">男</label>
+                <input id="teaSexMan" class="easyui-radiobutton" value="男" name="teaSex" checked="checked"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="teaSexWoman">女</label>
+                <input id="teaSexWoman" class="easyui-radiobutton" value="女" name="teaSex"/>
+            </form>
+            <div class="teaMobile" >
+                <label for="teaMobile">电话：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="teaMobile" class="easyui-textbox"/>
+            </div>
+            <div class="teaPosition" >
+                <label for="teaPosition">职位：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select id="teaPosition" class="easyui-combobox" name="subject" style="width: 170px; text-align: center;" >
+                    <option>-- 请选择 --</option>
+                    <option value="教师" >教师</option>
+                    <option value="班主任" >班主任</option>
+                    <option value="系主任" >系主任</option>
+                    <option value="指导员" >指导员</option>
+                    <option value="副院长" >副院长</option>
+                    <option value="院长" >院长</option>
+                    <option value="副书记" >副书记</option>
+                    <option value="书记" >书记</option>
+                </select>
+            </div>
+            <div class="teaQQ" >
+                <label for="teaQQ">Q Q：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="teaQQ" class="easyui-textbox"/>
+            </div>
+            <div class="teaBirthday" >
+                <label for="teaBirthday">生日：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="teaBirthday" class="easyui-datebox"/>
+            </div>
+            <div class="teaInDate" >
+                <label for="teaInDate">入职日期：</label>&nbsp;&nbsp;&nbsp;
+                <input id="teaInDate" class="easyui-datebox"/>
+            </div>
+        </div>
+        <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
+            <a id="teaSubmit" class="easyui-linkbutton" data-options="iconCls:'icon-ok'"
+               href="javascript:void(0)"
+               style="width:80px">Ok</a>
+            <a id="teaCancel" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"
+               href="javascript:void(0)"
+               style="width:80px">Cancel</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

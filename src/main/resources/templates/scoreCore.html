@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="/static/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/static/easyui/demo/demo.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/login/scoreCore.css">
+    <!-- js -->
+    <script type="text/javascript" src="/static/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/static/js/login/core.js"></script>
+</head>
+<body class="easyui-layout">
+<div class="score_north" data-options="region:'north'" style="height:50px">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成绩管理系统
+    <div class="score_current_user" >
+        当前用户：<span class="admin" th:text="${session.admin.username}" ></span>
+        &nbsp;&nbsp;&nbsp;
+        其他：<span class="logout" >退出</span>
+    </div>
+</div>
+<div class="score_south" data-options="region:'south',split:true" style="height:50px;">
+    <!-- 底部固定区域 -->
+    &copy;UPALA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址：陕西西安雁塔区鱼化寨南飞鸿十年城23001
+</div>
+<div data-options="region:'west',split:true" title="菜单" style="width:160px;">
+    <div class="easyui-panel" style="padding:5px; width: 150px; border: none;">
+        <ul id="sysTree"></ul>
+    </div>
+</div>
+<div data-options="region:'center',title:'数据中心',iconCls:'icon-ok'">
+    <div id="dataTabs" class="easyui-tabs" fit="true" border="false" >
+        <div title="欢迎页" closable="true">
+            <center><h1><font color="blue">欢迎登陆系统</font></h1></center>
+        </div>
+    </div>
+</div>
+</body>
+</html>

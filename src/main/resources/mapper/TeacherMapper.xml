@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wong.upala.ai.mapper.TeacherMapper" >
+
+    <!-- resultMap -->
+    <resultMap id="resTeaMap" type="com.wong.upala.ai.entity.Teacher" >
+        <id column="tea_id" property="teaId" jdbcType="INTEGER" javaType="int" />
+        <result column="tea_name" property="teaName" jdbcType="VARCHAR" javaType="String" />
+        <result column="tea_num" property="teaNum" jdbcType="VARCHAR" javaType="String" />
+        <result column="tea_sex" property="teaSex" jdbcType="VARCHAR" javaType="String" />
+        <result column="tea_phone" property="teaPhone" jdbcType="VARCHAR" javaType="String" />
+        <result column="tea_position" property="teaPosition" jdbcType="VARCHAR" javaType="String" />
+        <result column="tea_birthday" property="teaBirthday" jdbcType="DATE" javaType="date" />
+        <result column="tea_in_date" property="teaInDate" jdbcType="DATE" javaType="date" />
+        <result column="tea_create_date" property="teaCreateDate" jdbcType="TIMESTAMP" javaType="date" />
+        <result column="tea_qq" property="teaQQ" jdbcType="VARCHAR" javaType="String" />
+    </resultMap>
+
+    <!-- parameterMap -->
+    <parameterMap id="parTeaMap" type="com.wong.upala.ai.entity.Teacher" >
+        <parameter property="teaId" jdbcType="INTEGER" javaType="int" />
+        <parameter property="teaName" jdbcType="VARCHAR" javaType="String" />
+        <parameter property="teaNum" jdbcType="VARCHAR" javaType="String" />
+        <parameter property="teaSex" jdbcType="VARCHAR" javaType="String" />
+        <parameter property="teaPhone" jdbcType="VARCHAR" javaType="String" />
+        <parameter property="teaPosition" jdbcType="VARCHAR" javaType="String" />
+        <parameter property="teaBirthday" jdbcType="DATE" javaType="date" />
+        <parameter property="teaInDate" jdbcType="DATE" javaType="date" />
+        <parameter property="teaCreateDate" jdbcType="TIMESTAMP" javaType="date" />
+        <parameter property="teaQQ" jdbcType="VARCHAR" javaType="String" />
+    </parameterMap>
+
+    <!-- 查询教师 -->
+    <select id="getTeachers" resultMap="resTeaMap" parameterType="int" >
+        SELECT * FROM teacher LIMIT #{start}, #{limit}
+    </select>
+
+    <!-- 获取总记录数 -->
+    <select id="getTotal" resultType="Integer" >
+        SELECT COUNT(*) FROM teacher
+    </select>
+
+    <!-- key -->
+    <sql id="teaKey" >
+        <if test="teaNum != null and teaNum != ''" >
+            tea_num,
+        </if>
+        <if test="teaName != null and teaName != ''" >
+            tea_name,
+        </if>
+        <if test="teaSex != null and teaSex != ''" >
+            tea_sex,
+        </if>
+        <if test="teaPhone != null and teaPhone != ''" >
+            tea_phone,
+        </if>
+        <if test="teaPosition != null and teaPosition != ''" >
+            tea_position,
+        </if>
+        <if test="teaBirthday != null" >
+            tea_birthday,
+        </if>
+        <if test="teaInDate != null" >
+            tea_in_date,
+        </if>
+        <if test="teaCreateDate != null" >
+            tea_create_date,
+        </if>
+        <if test="teaQQ != null and teaQQ != ''" >
+            tea_qq
+        </if>
+    </sql>
+    <!-- value -->
+    <sql id="teaValue" >
+        <if test="teaNum != null and teaNum != ''" >
+            #{teaNum},
+        </if>
+        <if test="teaName != null and teaName != ''" >
+            #{teaName},
+        </if>
+        <if test="teaSex != null and teaSex != ''" >
+            #{teaSex},
+        </if>
+        <if test="teaPhone != null and teaPhone != ''" >
+            #{teaPhone},
+        </if>
+        <if test="teaPosition != null and teaPosition != ''" >
+            #{teaPosition},
+        </if>
+        <if test="teaBirthday != null" >
+            #{teaBirthday},
+        </if>
+        <if test="teaInDate != null" >
+            #{teaInDate},
+        </if>
+        <if test="teaCreateDate != null" >
+            #{teaCreateDate},
+        </if>
+        <if test="teaQQ != null and teaQQ != ''" >
+            #{teaQQ}
+        </if>
+    </sql>
+    <!-- 新增教师 -->
+    <insert id="addTeacher" parameterMap="parTeaMap" useGeneratedKeys="true" keyProperty="teaId" >
+        INSERT INTO teacher (<include refid="teaKey" />) VALUE (<include refid="teaValue" />)
+    </insert>
+
+</mapper>

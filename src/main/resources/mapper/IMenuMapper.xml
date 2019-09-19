@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wong.upala.ai.mapper.MenuMapper" >
+
+    <select id="querySystemByType" parameterType="String" resultType="com.wong.upala.ai.entity.SystemManageOne">
+        SELECT * FROM system WHERE `type` = #{type}
+    </select>
+
+    <select id="querySystemsByType" parameterType="String" resultType="com.wong.upala.ai.entity.SystemManage" >
+        SELECT * FROM system WHERE `type` = #{type}
+    </select>
+
+</mapper>

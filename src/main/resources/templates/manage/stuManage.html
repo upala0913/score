@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理</title>
+</head>
+<body>
+<script type="text/javascript" src="/static/js/manage/student.js"></script>
+<table id="dg"></table>
+
+<!-- 显示新增窗口 -->
+<div id="w" class="easyui-window" title="增加"
+     data-options="iconCls:'icon-save', closed:true, modal: true, resizable: false"
+     style="width:350px;height:470px;padding:5px;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding:10px;">
+            <div class="stuNum" >
+                <label for="stuNum">学号：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuNum" class="easyui-textbox"/>
+            </div>
+            <div class="stuName" >
+                <label for="stuName">姓名：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuName" class="easyui-textbox"/>
+            </div>
+            <form id="ff">
+                性别：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="stuSexMan">男</label>
+                <input id="stuSexMan" class="easyui-radiobutton" value="男" name="fruit" checked="checked"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="stuSexWoman">女</label>
+                <input id="stuSexWoman" class="easyui-radiobutton" value="女" name="fruit"/>
+            </form>
+            <div class="stuBirthday" >
+                <label for="stuBirthday">生日：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuBirthday" class="easyui-datebox"/>
+            </div>
+            <div class="stuQQ" >
+                <label for="stuQQ">Q Q：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuQQ" class="easyui-textbox"/>
+            </div>
+            <div class="stuMobile" >
+                <label for="stuMobile">电话：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuMobile" class="easyui-textbox"/>
+            </div>
+            <div class="stuMobile" >
+                <label for="stuCreateTime">入学日期：</label>&nbsp;&nbsp;&nbsp;
+                <input id="stuCreateTime" class="easyui-datebox"/>
+            </div>
+            <div class="stuSubject" >
+                <label for="stuSubject">专业：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select id="stuSubject" class="easyui-combobox" name="subject" style="width: 170px; text-align: center;" >
+                    <option>-- 请选择 --</option>
+                    <option value="电子信息工程" >电子信息工程</option>
+                    <option value="物联网工程" >物联网工程</option>
+                    <option value="计算机科学与技术" >计算机科学与技术</option>
+                    <option value="通信工程" >通信工程</option>
+                    <option value="网络工程" >网络工程</option>
+                </select>
+            </div>
+            <div class="stuMobile" >
+                <label for="stuGrade">班级：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuGrade" class="easyui-textbox" readonly="readonly" style="text-align: center;"/>
+            </div>
+        </div>
+        <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
+            <a id="submit" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)"
+               style="width:80px">Ok</a>
+            <a id="cancel" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)"
+               style="width:80px">Cancel</a>
+        </div>
+    </div>
+</div>
+
+<!-- 显示学生信息 -->
+<div id="stuListWin" class="easyui-window" title="学生信息"
+     data-options="iconCls:'icon-save', closed:true, modal: true, resizable: false"
+     style="width:900px;height:400px;padding:5px;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'">
+            <table id="stuList" ></table>
+        </div>
+        <div data-options="region:'south',border:false" style="text-align: center;padding:5px 0 0;">
+            <a id="ok" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)"
+               style="width:80px">Ok</a>
+        </div>
+    </div>
+</div>
+
+<!-- 显示修改信息窗口 -->
+<div id="updateWindow" class="easyui-window" title="修改"
+     data-options="iconCls:'icon-save', closed:true, modal: true, resizable: false"
+     style="width:350px;height:470px;padding:5px;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding:10px;">
+            <div class="stuNum" >
+                <label for="stuNumUpdate">学号：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuNumUpdate" class="easyui-textbox" readonly="readonly"/>
+            </div>
+            <div class="stuName" >
+                <label for="stuNameUpdate">姓名：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuNameUpdate" class="easyui-textbox"/>
+            </div>
+            <form id="ffUpdate">
+                性别：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="stuSexManUpdate">男</label>
+                <input id="stuSexManUpdate" type="radio" value="男" name="fruitUpdate" readonly="readonly"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="stuSexWomanUpdate">女</label>
+                <input id="stuSexWomanUpdate" type="radio" value="女" name="fruitUpdate" readonly="readonly"/>
+            </form>
+            <div class="stuBirthday" >
+                <label for="stuBirthdayUpdate">生日：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuBirthdayUpdate" class="easyui-datebox" readonly="readonly"/>
+            </div>
+            <div class="stuQQ" >
+                <label for="stuQQUpdate">Q Q：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuQQUpdate" class="easyui-textbox"/>
+            </div>
+            <div class="stuMobile" >
+                <label for="stuMobileUpdate">电话：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuMobileUpdate" class="easyui-textbox"/>
+            </div>
+            <div class="stuMobile" >
+                <label for="stuCreateTimeUpdate">入学日期：</label>&nbsp;&nbsp;&nbsp;
+                <input id="stuCreateTimeUpdate" class="easyui-datebox" readonly="readonly"/>
+            </div>
+            <div class="stuSubject" >
+                <label for="stuSubjectUpdate">专业：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select id="stuSubjectUpdate" class="easyui-combobox" name="subject" style="width: 170px; text-align: center;" >
+                    <option>-- 请选择 --</option>
+                    <option value="电子信息工程" >电子信息工程</option>
+                    <option value="物联网工程" >物联网工程</option>
+                    <option value="计算机科学与技术" >计算机科学与技术</option>
+                    <option value="通信工程" >通信工程</option>
+                    <option value="网络工程" >网络工程</option>
+                </select>
+            </div>
+            <div class="stuMobile" >
+                <label for="stuGradeUpdate">班级：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuGradeUpdate" class="easyui-textbox" readonly="readonly" style="text-align: center;"/>
+            </div>
+        </div>
+        <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
+            <a id="submitUpdate" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)"
+               style="width:80px">Ok</a>
+            <a id="cancelUpdate" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)"
+               style="width:80px">Cancel</a>
+        </div>
+    </div>
+</div>
+
+<!-- 显示详情信息窗口 -->
+<div id="DetailWindow" class="easyui-window" title="详情"
+     data-options="iconCls:'icon-save', closed:true, modal: true, resizable: false"
+     style="width:350px;height:430px;padding:5px;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding:10px;">
+            <div class="stuNum" >
+                <label for="stuNumDetail">学号：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuNumDetail" class="easyui-textbox" readonly="readonly"/>
+            </div>
+            <div class="stuName" >
+                <label for="stuNameDetail">姓名：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuNameDetail" class="easyui-textbox"/>
+            </div>
+            <form id="ffDetail">
+                性别：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="stuSexManDetail">男</label>
+                <input id="stuSexManDetail" type="radio" value="男" name="fruitDetail" readonly="readonly"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="stuSexWomanDetail">女</label>
+                <input id="stuSexWomanDetail" type="radio" value="女" name="fruitDetail" readonly="readonly"/>
+            </form>
+            <div class="stuBirthday" >
+                <label for="stuBirthdayDetail">生日：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuBirthdayDetail" class="easyui-datebox" readonly="readonly"/>
+            </div>
+            <div class="stuQQ" >
+                <label for="stuQQDetail">Q Q：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuQQDetail" class="easyui-textbox"/>
+            </div>
+            <div class="stuMobile" >
+                <label for="stuMobileDetail">电话：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuMobileDetail" class="easyui-textbox"/>
+            </div>
+            <div class="stuMobile" >
+                <label for="stuCreateTimeDetail">入学日期：</label>&nbsp;&nbsp;&nbsp;
+                <input id="stuCreateTimeDetail" class="easyui-datebox" readonly="readonly"/>
+            </div>
+            <div class="stuSubject" >
+                <label for="stuSubjectDetail">专业：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select id="stuSubjectDetail" class="easyui-combobox" name="subject" style="width: 170px; text-align: center;" >
+                    <option>-- 请选择 --</option>
+                    <option value="电子信息工程" >电子信息工程</option>
+                    <option value="物联网工程" >物联网工程</option>
+                    <option value="计算机科学与技术" >计算机科学与技术</option>
+                    <option value="通信工程" >通信工程</option>
+                    <option value="网络工程" >网络工程</option>
+                </select>
+            </div>
+            <div class="stuMobile" >
+                <label for="stuGradeDetail">班级：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="stuGradeDetail" class="easyui-textbox" readonly="readonly"
+                       style="text-align: center;"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

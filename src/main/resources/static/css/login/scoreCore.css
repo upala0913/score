@@ -1,0 +1,42 @@
+.score_south {
+    text-align: center;
+    background-color: #a8d7e9;
+}
+.score_north {
+    background-color: #a8d7e9;
+    font-size: 30px;
+    color: #000;
+    font-family: 华文琥珀, serif;
+    line-height: 48px;
+}
+.score_current_user {
+    font-size: 14px;
+    font-family: 微软雅黑, serif;
+    float: right;
+    width: 330px;
+    height: 30px;
+    background-color: #83c1dd;
+    line-height: 30px;
+    text-align: center;
+}
+.logout {
+    cursor: pointer;
+}
+.admin, .logout {
+    color: #ffffff;
+}
+.stuNum, .stuName, #ff,
+.stuBirthday, .stuQQ, .stuMobile,
+.stuCreateTime, .stuGrade, .stuSubject {
+    margin-top: 10px;
+}
+.stuNumUpdate, .stuNameUpdate, #ffUpdate,
+.stuBirthdayUpdate, .stuQQUpdate, .stuMobileUpdate,
+.stuCreateTimeUpdate, .stuGradeUpdate, .stuSubjectUpdate {
+    margin-top: 10px;
+}
+.teaNum,.teaName,#teaForm,
+.teaBirthday,.teaMobile,.teaMobile,
+.teaQQ,.teaInDate,.teaCreateDate {
+    margin-top: 10px;
+}

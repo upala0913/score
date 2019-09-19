@@ -1,0 +1,204 @@
+.bg{
+    background: url("/static/image/login/bg1.jpg") no-repeat;
+    background-size: cover;
+}
+.component {
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    top: 5%;
+    left: 30%;
+}
+.bg-login {
+    width: 500px;
+    height: 50px;
+    position: absolute;
+    top: 7%;
+    left: 10%;
+    font-size: 30px;
+    font-family: "宋体", serif;
+    text-align: center;
+    line-height: 50px;
+}
+.login {
+    position: absolute;
+    top: 20%;
+    left: 18%;
+}
+.login-top {
+    width: 400px;
+    height: 50px;
+    background-color: #23232e;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.login-middle {
+    width: 400px;
+    height: 300px;
+    background-color: #2b2b36;
+}
+.login-bottom {
+    width: 400px;
+    height: 50px;
+    background-color: rgb(62, 167, 81);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    line-height: 50px;
+    font-family: "宋体", serif;
+    cursor: pointer;
+}
+.login-close {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+}
+.login-right1, .login-right2, .login-right3 {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 18px;
+    border-radius: 15px;
+}
+.login-right1 {
+    left: 320px;
+    background: #f1c85f;
+}
+.login-right2 {
+    left: 345px;
+    background: #ea569a;
+}
+.login-right3 {
+    left: 370px;
+    background: #6756ea;
+}
+.login-title-img {
+    position: absolute;
+    top: 60px;
+    left: 160px;
+}
+.login-title-text {
+    position: absolute;
+    top: 145px;
+    left: 168px;
+    color: white;
+    font-size: 14px;
+}
+.login-info {
+    width: 360px;
+    height: 168px;
+    position: absolute;
+    top: 170px;
+    left: 20px;
+}
+.login-info table {
+    width: 360px;
+    height: 168px;
+}
+.login-info table tr {
+    width: 360px;
+    height: 50px;
+}
+.login-info-title {
+    width: 60px;
+    height: 50px;
+    border-bottom: 1px solid white;
+}
+.login-info-text {
+    width: 260px;
+    height: 50px;
+    border-bottom: 1px solid white;
+}
+.login-info-title-adm, .login-info-title-pass, .login-info-title-key {
+    position: absolute;
+    left: 25px;
+}
+.login-info-title-adm {
+    top: 15px;
+}
+.login-info-title-pass {
+    top: 75px;
+}
+.login-info-title-key {
+    top: 135px;
+}
+#username {
+    border: none;
+    background-color: pink;
+    height: 30px;
+    width: 220px;
+    position: absolute;
+    top: 15px;
+    left: 90px;
+    border-radius: 10px;
+    text-indent: 10px;
+}
+#password {
+    border: none;
+    background-color: pink;
+    height: 30px;
+    width: 220px;
+    position: absolute;
+    top: 70px;
+    left: 90px;
+    border-radius: 10px;
+    text-indent: 10px;
+}
+#key {
+    border: none;
+    background-color: pink;
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    top: 125px;
+    left: 90px;
+    border-radius: 10px;
+    text-indent: 10px;
+}
+.code-key {
+    width: 70px;
+    height: 32px;
+    background-color: white;
+    position: absolute;
+    top: 125px;
+    left: 220px;
+    border-radius: 10px;
+}
+.code-key {
+    text-align: center;
+    line-height: 32px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.i18n {
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    top: 110%;
+    left: 20%;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

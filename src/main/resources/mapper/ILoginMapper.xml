@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wong.upala.ai.mapper.LoginMapper">
+
+    <select id="queryAdmin" parameterType="com.wong.upala.ai.entity.Admin" resultType="com.wong.upala.ai.entity.Admin">
+        SELECT * FROM admin WHERE username = #{username} AND userpass = #{userpass}
+    </select>
+
+</mapper>

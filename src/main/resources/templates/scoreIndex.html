@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/css/login/index.css" type="text/css">
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="/static/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/static/easyui/demo/demo.css">
+    <!-- js -->
+    <script type="text/javascript" src="/static/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/static/js/login/index.js"></script>
+</head>
+<body class="bg">
+<div class="component">
+    <div class="bg-login" th:text="#{login.tip}" >
+        学生成绩管理系统
+    </div>
+    <div class="login">
+        <div class="login-top">
+            <img class="login-close" src="/static/image/login/close.png" alt="关闭">
+            <div class="login-right1"></div>
+            <div class="login-right2"></div>
+            <div class="login-right3"></div>
+        </div>
+        <div class="login-middle">
+            <img class="login-title-img" src="/static/image/login/avtar.png" alt="标题">
+            <div class="login-title-text" th:text="#{login.title}" >
+                upala作品
+            </div>
+            <div class="login-info">
+                <table>
+                    <tr>
+                        <td class="login-info-title">
+                            <label for="username">
+                                <img class="login-info-title-adm" src="/static/image/login/adm.png" alt="名称">
+                            </label>
+                        </td>
+                        <td class="login-info-text">
+                            <input id="username" type="text" placeholder="用户名"
+                                   th:placeholder="#{login.username}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="login-info-title">
+                            <label for="password">
+                                <img class="login-info-title-pass" src="/static/image/login/pass.png"
+                                     alt="名称">
+                            </label>
+                        </td>
+                        <td class="login-info-text">
+                            <input id="password" type="password" placeholder="密码"
+                                   th:placeholder="#{login.password}" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="login-info-title">
+                            <label for="key">
+                                <img class="login-info-title-key" src="/static/image/login/key.png" alt="名称">
+                            </label>
+                        </td>
+                        <td class="login-info-text">
+                            <input id="key" type="text" placeholder="验证码" th:placeholder="#{login.code}" >
+                            <div class="code-key"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="login-bottom" th:text="#{login.btn}" >
+            登录
+        </div>
+        <div class="i18n" >
+            <a th:href="@{/upala/scoreIndex.html(local='zh_CN')}" class="easyui-linkbutton i18n-ch" >中文</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+            <a th:href="@{/upala/scoreIndex.html(local='en_US')}" class="easyui-linkbutton i18n-zh">English
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
