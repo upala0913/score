@@ -51,4 +51,13 @@ public class CommUtils {
 		return stu;
 	}
 
+	/**
+	 * 判断对象是否为空
+	 * @param obj 入参
+	 * @return 若为null返回true，false
+	 */
+	public static boolean isEmpty(Object obj) {
+		return obj == null;
+	}
+
 }

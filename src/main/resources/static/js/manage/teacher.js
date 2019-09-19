@@ -16,33 +16,21 @@ $(function () {
             {
                 field: 'teaBirthday', width: 140, align: 'center', title: "生日",
                 formatter: function (value) {
-                    var date = new Date(value);
-                    var year = date.getFullYear();
-                    var month = date.getMonth() + 1;
-                    var day = date.getDate();
-                    return year + "-" + getNum(month) + "-" + getNum(day);
+                    return formatData (value);
                 }
             },
             {field: 'teaPhone', width: 130, align: 'center', title: "电话"},
             {field: 'teaPosition', width: 130, align: 'center', title: "职位"},
             {
                 field: 'teaInDate', width: 140, align: 'center', title: "入职日期",
-                formatter: function (value) {
-                    var date = new Date(value);
-                    var year = date.getFullYear();
-                    var month = date.getMonth() + 1;
-                    var day = date.getDate();
-                    return year + "-" + getNum(month) + "-" + getNum(day);
+                formatter: function (value){
+                    return formatData (value);
                 }
             },
             {
                 field: 'teaCreateDate', width: 140, align: 'center', title: "创建时间",
                 formatter: function (value) {
-                    var date = new Date(value);
-                    var year = date.getFullYear();
-                    var month = date.getMonth() + 1;
-                    var day = date.getDate();
-                    return year + "-" + getNum(month) + "-" + getNum(day);
+                    return formatData (value);
                 }
             },
             {field: 'teaQQ', width: 130, align: 'center', title: "QQ"},
@@ -50,14 +38,11 @@ $(function () {
                 field: '_operate', width: 320, align: 'center', title: "操作",
                 formatter: function (value, row, index) {
                     console.log(row.teaNum);
-                    var str = '<a href="javascript:void(0);" class="update_btn" onClick = "editStudent(' + row.teaNum + ')"' +
-                        ' >修改</a>' +
+                    var str = '<a href="javascript:void(0);" class="update_btn" type="'+row.teaNum+'" onClick = "editTeacher(this.type)">修改</a>' +
                         '&nbsp;&nbsp;&nbsp;&nbsp;' +
-                        '<a href="javascript:void(0);" class="delete_btn" onclick = "deleteStudent(' + row.teaNum + ')"' +
-                        ' >删除</a>' +
+                        '<a href="javascript:void(0);" class="delete_btn" type="'+row.teaNum+'" onclick = "deleteTeacher(this.type)">删除</a>' +
                         '&nbsp;&nbsp;&nbsp;&nbsp;' +
-                        '<a href="javascript:void(0);" class="detail_btn" onclick = "detailStudent(' + row.teaNum + ')"' +
-                        '>查看</a>';
+                        '<a href="javascript:void(0);" class="detail_btn" type="'+row.teaNum+'" onclick = "detailTeacher(this.type)">查看</a>';
                     return str;
                 }
             }
@@ -94,8 +79,8 @@ $(function () {
         }, {
             text: "QQ：<input id='searchTeaQQ' class='easyui-textbox' style='height:20px; width: 100px;' />"
         }, {
-            text: "职位：<select id='teaPosition' class='easyui-combobox' name='subject' style='width: 100px;" +
-                        "height: 20px; text-align: center;' >\n" +
+            text: "职位：<select id='searchTeaPosition' class='easyui-combobox' name='subject' style='width:" +
+                        "100px; height: 20px; text-align: center;' >\n" +
                             "<option>-- 请选择 --</option>\n" +
                             "<option value='教师' >教师</option>\n" +
                             "<option value='班主任' >班主任</option>\n" +
@@ -120,14 +105,6 @@ $(function () {
             }
         }]
     });
-
-    // 格式数据
-    function getNum(param) {
-        if (param < 10) {
-            return "0" + param;
-        }
-        return param;
-    }
 
     // 获取教师信息数据
     function getTeaData() {
@@ -180,17 +157,59 @@ $(function () {
 
 });
 
+// 格式数据
+function getNum(param) {
+    if (param < 10) {
+        return "0" + param;
+    }
+    return param;
+}
+
+// 格式化数据
+function formatData (value) {
+    var date = new Date(value);
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    return year + "-" + getNum(month) + "-" + getNum(day);
+}
+
 // 编辑教师信息
-function editStudent(param) {
-    $.messager.alert("信息", param, "info");
+function editTeacher(param) {
+    var data = {"teaNum":param};
+    $.ajax({
+        url:"/teacher/queryTeacher",
+        type:"post",
+        contentType:"application/json;charset=utf8",
+        data:JSON.stringify(data),
+        dataType:"json",
+        success:function (data) {
+            if (data.status === "true") {
+                var message = data.message;
+                $("#teaEditWin").window("open");
+                console.log(message);
+                $("#teaEditNum").textbox("setValue", message.teaNum);
+                $("#teaEditName").textbox("setValue", message.teaName);
+                // $("#teaEditSexMan").textbox("setValue", message.teaSex);
+                $("#teaEditMobile").textbox("setValue", message.teaPhone);
+                $("#teaEditPosition").textbox("setValue", message.teaPosition);
+                $("#teaEditQQ").textbox("setValue", message.teaQQ);
+                $("#teaEditBirthday").datebox("setValue", formatData(message.teaBirthday));
+                $("#teaEditInDate").datebox("setValue", formatData(message.teaInDate));
+                $("#teaEditCreateDate").datebox("setValue", formatData(message.teaCreateDate));
+            } else {
+                $.messager.alert("信息", "查询数据为空！", "error");
+            }
+        }
+    });
 }
 
 // 删除教师信息
-function deleteStudent(param) {
+function deleteTeacher(param) {
     $.messager.alert("信息", param, "warning");
 }
 
 // 查看教师信息
-function detailStudent(param) {
+function detailTeacher(param) {
     $.messager.alert("信息", param, "info");
 }

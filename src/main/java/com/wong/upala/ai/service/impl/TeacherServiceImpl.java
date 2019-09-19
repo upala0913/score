@@ -3,7 +3,9 @@ package com.wong.upala.ai.service.impl;
 import com.wong.upala.ai.entity.Teacher;
 import com.wong.upala.ai.mapper.TeacherMapper;
 import com.wong.upala.ai.service.TeacherService;
+import com.wong.upala.ai.utils.CommUtils;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,6 +71,24 @@ public class TeacherServiceImpl implements TeacherService {
 			// 添加成功
 			resultMap.put("status", "false");
 			resultMap.put("message", "error");
+		}
+		return resultMap;
+	}
+
+	/**
+	 * 查询教师
+	 * @param teaNum 入参
+	 * @return 返回值
+	 */
+	@Override
+	public Map<String, Object> queryTeacher(String teaNum) {
+		Map<String, Object> resultMap = new HashMap<>();
+		Teacher teacher = teacherMapper.queryTeacher(teaNum);
+		resultMap.put("status", "true");
+		resultMap.put("message", teacher);
+		if (CommUtils.isEmpty(teacher)) {
+			resultMap.put("status", "false");
+			resultMap.put("message", null);
 		}
 		return resultMap;
 	}

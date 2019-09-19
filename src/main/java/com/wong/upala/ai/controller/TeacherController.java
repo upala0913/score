@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -45,6 +46,23 @@ public class TeacherController {
         Teacher teacher = JSONObject.parseObject(param, Teacher.class);
         log.info("教师数据信息：{}", teacher);
         return teacherService.addTeacher(teacher);
+    }
+
+    /**
+     * 查询教师信息数据
+     * @param param 入参
+     * @return 返回值
+     */
+    @RequestMapping(value = "/queryTeacher", method = RequestMethod.POST)
+    public Map<String, Object> queryTeacher(@RequestBody String param) {
+        log.info("参数信息：{}", param);
+        Map<String, Object> map = new HashMap<>();
+        JSONObject jsonObject = JSONObject.parseObject(param);
+        map.putAll(jsonObject);
+        String teaNum = (String) map.get("teaNum");
+        Map<String, Object> queryTeacher = teacherService.queryTeacher(teaNum);
+        log.info("查询信息：{}", queryTeacher);
+        return queryTeacher;
     }
 
 }

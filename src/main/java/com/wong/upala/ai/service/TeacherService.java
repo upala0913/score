@@ -26,4 +26,11 @@ public interface TeacherService {
 	 */
 	Map<String, Object> addTeacher(Teacher tea);
 
+	/**
+	 * 查询教师
+	 * @param teaNum 入参
+	 * @return 返回值
+	 */
+	Map<String, Object> queryTeacher(String teaNum);
+
 }

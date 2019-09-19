@@ -40,14 +40,12 @@ $(function () {
                 field: '_operate', width: 320, align: 'center', title: "操作",
                 formatter: function (value, row, index) {
                     console.log(row.stuNum);
-                    var str = '<a href="javascript:void(0);" class="update_btn" onClick = "editStudent(' + row.stuNum + ')"'+
-                        ' >修改</a>'+
+                    var stuNum = row.stuNum;
+                    var str = '<a href="javascript:void(0);" class="update_btn" type="'+stuNum+'" onClick = "editStudent(this.type)">修改</a>'+
                         '&nbsp;&nbsp;&nbsp;&nbsp;'+
-                        '<a href="javascript:void(0);" class="delete_btn" onclick = "deleteStudent(' + row.stuNum + ')"'+
-                        ' >删除</a>'+
+                        '<a href="javascript:void(0);" class="delete_btn" type="'+stuNum+'" onclick = "deleteStudent(this.type)">删除</a>'+
                         '&nbsp;&nbsp;&nbsp;&nbsp;'+
-                        '<a href="javascript:void(0);" class="detail_btn" onclick = "detailStudent(' + row.stuNum + ')"'+
-                        '>查看</a>';
+                        '<a href="javascript:void(0);" class="detail_btn" type="'+stuNum+'" onclick = "detailStudent(this.type)">查看</a>';
                     return str;
                 }
             }

@@ -33,4 +33,11 @@ public interface TeacherMapper {
 	 */
 	Integer addTeacher(Teacher tea);
 
+	/**
+	 * 查询教师数据
+	 * @param teaNum 返回值
+	 * @return 返回值
+	 */
+	Teacher queryTeacher(String teaNum);
+
 }
