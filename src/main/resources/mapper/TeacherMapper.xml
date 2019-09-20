@@ -107,7 +107,41 @@
     </insert>
 
     <select id="queryTeacher" parameterType="String" resultMap="resTeaMap" >
-        SELECT * FROM teacher WHERE tea_num = #{teaNum}
+        SELECT * FROM teacher t WHERE
+        <if test="teaNum != null and teaNum != ''" >
+            t.tea_num = #{teaNum}
+        </if>
     </select>
+
+    <!-- 修改教师信息 -->
+    <update id="updateTeacher" parameterMap="parTeaMap" useGeneratedKeys="true" keyProperty="teaId" >
+        UPDATE teacher t
+        <trim prefix="set" suffixOverrides="," >
+            <if test="teaName != null and teaName != ''" >
+                t.tea_name=#{teaName},
+            </if>
+            <if test="teaPhone != null and teaPhone != ''" >
+                t.tea_phone=#{teaPhone},
+            </if>
+            <if test="teaSex != null and teaSex != ''" >
+                t.tea_sex=#{teaSex},
+            </if>
+            <if test="teaPosition != null and teaPosition != ''" >
+                t.tea_position=#{teaPosition}
+            </if>
+        </trim>
+        WHERE
+        <if test="teaNum != null and teaNum != ''" >
+            t.tea_num = #{teaNum}
+        </if>
+    </update>
+
+    <!-- 删除教师信息 -->
+    <delete id="deleteTeacher" parameterType="String" >
+        DELETE FROM teacher WHERE
+        <if test="teaNum != null and teaNum != ''" >
+            tea_num = #{teaNum}
+        </if>
+    </delete>
 
 </mapper>

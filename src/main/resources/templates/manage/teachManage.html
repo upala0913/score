@@ -81,7 +81,7 @@
         <div data-options="region:'center'" style="padding:10px;">
             <div class="teaNum" >
                 <label for="teaEditNum">工号：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="teaEditNum" class="easyui-textbox"/>
+                <input id="teaEditNum" class="easyui-textbox" readonly="readonly" />
             </div>
             <div class="teaName" >
                 <label for="teaEditName">姓名：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -90,10 +90,10 @@
             <form id="teaEditForm">
                 性别：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <label for="teaEditSexMan">男</label>
-                <input id="teaEditSexMan" class="easyui-radiobutton" value="男" name="teaSex" checked="checked"/>
+                <input id="teaEditSexMan" type="radio" value="男" name="teaEditSex" />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <label for="teaEditSexWoman">女</label>
-                <input id="teaEditSexWoman" class="easyui-radiobutton" value="女" name="teaSex"/>
+                <input id="teaEditSexWoman" type="radio" value="女" name="teaEditSex" />
             </form>
             <div class="teaMobile" >
                 <label for="teaEditMobile">电话：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -119,15 +119,15 @@
             </div>
             <div class="teaBirthday" >
                 <label for="teaEditBirthday">生日：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="teaEditBirthday" class="easyui-datebox"/>
+                <input id="teaEditBirthday" class="easyui-datebox" readonly="readonly" />
             </div>
             <div class="teaInDate" >
                 <label for="teaEditInDate">入职日期：</label>&nbsp;&nbsp;&nbsp;
-                <input id="teaEditInDate" class="easyui-datebox"/>
+                <input id="teaEditInDate" class="easyui-datebox" readonly="readonly" />
             </div>
             <div class="teaCreateDate" >
-                <label for="teaEditCreateDate">入职日期：</label>&nbsp;&nbsp;&nbsp;
-                <input id="teaEditCreateDate" class="easyui-datebox"/>
+                <label for="teaEditCreateDate">创建日期：</label>&nbsp;&nbsp;&nbsp;
+                <input id="teaEditCreateDate" class="easyui-datebox" readonly="readonly" />
             </div>
         </div>
         <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
@@ -137,6 +137,71 @@
             <a id="teaEditCancel" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"
                href="javascript:void(0)"
                style="width:80px">Cancel</a>
+        </div>
+    </div>
+</div>
+
+<!-- 显示查看窗口 -->
+<div id="teaCheckWin" class="easyui-window" title="增加"
+     data-options="iconCls:'icon-save', closed:true, modal: true, resizable: false"
+     style="width:350px;height:470px;padding:5px;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding:10px;">
+            <div class="teaNum" >
+                <label for="teaCheckNum">工号：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="teaCheckNum" class="easyui-textbox" readonly="readonly" />
+            </div>
+            <div class="teaName" >
+                <label for="teaCheckName">姓名：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="teaCheckName" class="easyui-textbox" readonly="readonly" />
+            </div>
+            <form id="teaCheckForm">
+                性别：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="teaCheckSexMan">男</label>
+                <input id="teaCheckSexMan" type="radio" value="男" name="teaCheckSex" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="teaCheckSexWoman">女</label>
+                <input id="teaCheckSexWoman" type="radio" value="女" name="teaCheckSex" />
+            </form>
+            <div class="teaMobile" >
+                <label for="teaCheckMobile">电话：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="teaCheckMobile" class="easyui-textbox" readonly="readonly" />
+            </div>
+            <div class="teaPosition" >
+                <label for="teaCheckPosition">职位：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select id="teaCheckPosition" readonly="readonly"  class="easyui-combobox" name="subject" style="width: 170px; text-align: center;" >
+                    <option>-- 请选择 --</option>
+                    <option value="教师" >教师</option>
+                    <option value="班主任" >班主任</option>
+                    <option value="系主任" >系主任</option>
+                    <option value="指导员" >指导员</option>
+                    <option value="副院长" >副院长</option>
+                    <option value="院长" >院长</option>
+                    <option value="副书记" >副书记</option>
+                    <option value="书记" >书记</option>
+                </select>
+            </div>
+            <div class="teaQQ" >
+                <label for="teaCheckQQ">Q Q：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="teaCheckQQ" class="easyui-textbox" readonly="readonly" />
+            </div>
+            <div class="teaBirthday" >
+                <label for="teaCheckBirthday">生日：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="teaCheckBirthday" class="easyui-datebox" readonly="readonly" />
+            </div>
+            <div class="teaInDate" >
+                <label for="teaCheckInDate">入职日期：</label>&nbsp;&nbsp;&nbsp;
+                <input id="teaCheckInDate" class="easyui-datebox" readonly="readonly" />
+            </div>
+            <div class="teaCreateDate" >
+                <label for="teaCheckCreateDate">创建日期：</label>&nbsp;&nbsp;&nbsp;
+                <input id="teaCheckCreateDate" class="easyui-datebox" readonly="readonly" />
+            </div>
+        </div>
+        <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
+            <a id="teaCheckSubmit" class="easyui-linkbutton" data-options="iconCls:'icon-ok'"
+               href="javascript:void(0)"
+               style="width:80px">Ok</a>
         </div>
     </div>
 </div>

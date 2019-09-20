@@ -33,4 +33,18 @@ public interface TeacherService {
 	 */
 	Map<String, Object> queryTeacher(String teaNum);
 
+    /**
+     * 修改教师数据信息
+     * @param teacher 入参
+     * @return 返回值
+     */
+    Map<String, Object> updateTeacher(Teacher teacher);
+
+    /**
+     * 删除教师信息数据
+     * @param teaNum 入参
+     * @return 返回值
+     */
+    Map<String, Object> deleteTeacher(String teaNum);
+
 }

@@ -38,6 +38,19 @@ public interface TeacherMapper {
 	 * @param teaNum 返回值
 	 * @return 返回值
 	 */
-	Teacher queryTeacher(String teaNum);
+	Teacher queryTeacher(@Param("teaNum") String teaNum);
+
+    /**
+     * 修改教师信息
+     * @param teacher 如此那
+     * @return 返回值
+     */
+	Integer updateTeacher(Teacher teacher);
+
+    /**
+     * 删除教师信息
+     * @param teaNum 入参
+     */
+	void deleteTeacher(@Param("teaNum") String teaNum);
 
 }

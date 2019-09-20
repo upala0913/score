@@ -1,5 +1,6 @@
 package com.wong.upala.ai.service.impl;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.wong.upala.ai.entity.Teacher;
 import com.wong.upala.ai.mapper.TeacherMapper;
 import com.wong.upala.ai.service.TeacherService;
@@ -92,5 +93,45 @@ public class TeacherServiceImpl implements TeacherService {
 		}
 		return resultMap;
 	}
+
+    /**
+     * 修改教师数据信息
+     * @param teacher 入参
+     * @return 返回值
+     */
+    @Override
+    public Map<String, Object> updateTeacher(Teacher teacher) {
+        Map<String, Object> resultMap = new HashMap<>();
+        log.info("修改教师之后的数据信息：{}", teacher);
+        Integer res = teacherMapper.updateTeacher(teacher);
+        log.info("修改结果：{}", res);
+        resultMap.put("status", "true");
+        resultMap.put("message", "update success");
+        if (res < 0) {
+            resultMap.put("status", "false");
+            resultMap.put("message", "update fail");
+        }
+        return resultMap;
+    }
+
+    /**
+     * 删除教师信息数据
+     * @param teaNum 入参
+     * @return 返回值
+     */
+    @Override
+    public Map<String, Object> deleteTeacher(String teaNum) {
+        Map<String, Object> resultMap = new HashMap<>();
+        log.info("参数信息：{}", teaNum);
+        teacherMapper.deleteTeacher(teaNum);
+        Teacher teacher = teacherMapper.queryTeacher(teaNum);
+        resultMap.put("status", "true");
+        resultMap.put("message", "delete success");
+        if (!CommUtils.isEmpty(teacher)) {
+            resultMap.put("status", "true");
+            resultMap.put("message", "delete fail");
+        }
+        return resultMap;
+    }
 
 }
