@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 public class Teacher {
 
-	private int teaId;
+	private Integer teaId;
 	private String teaName;
 	private String teaNum;
 	private String teaSex;

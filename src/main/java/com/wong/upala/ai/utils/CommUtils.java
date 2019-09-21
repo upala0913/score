@@ -6,7 +6,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.wong.upala.ai.entity.Student;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /*****************************
  *  @author 王鹏
@@ -52,12 +54,46 @@ public class CommUtils {
 	}
 
 	/**
+	 * json转对象
+	 * @param json 入参json数据
+	 * @param clazz 入参对象
+	 * @return 返回值
+	 */
+	public static Object jsonToObject(String json, Class clazz) {
+		return JSON.parseObject(json, clazz);
+	}
+
+	/**
 	 * 判断对象是否为空
 	 * @param obj 入参
 	 * @return 若为null返回true，false
 	 */
 	public static boolean isEmpty(Object obj) {
 		return obj == null;
+	}
+
+	/**
+	 * 单个字符串的转换
+	 * @param json 入参
+	 * @return 返回值
+	 */
+	public static String stringToObject(String json) {
+		Map<String, Object> map = new HashMap<>();
+		JSONObject jsonObject = JSONObject.parseObject(json);
+		map.putAll(jsonObject);
+		return (String) map.get("teaNum");
+	}
+
+	/**
+	 * 将字符串转换为map集合
+	 * @param json 入参
+	 * @return 返回值
+	 */
+	public static Map<String, Object> getMapByJson(String json) {
+		Map<String, Object> map = new HashMap<>();
+		JSONObject object = JSONObject.parseObject(json);
+		map.putAll(object);
+		return map;
 	}
 
 }
