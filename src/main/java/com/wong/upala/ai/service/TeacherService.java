@@ -47,4 +47,11 @@ public interface TeacherService {
      */
     Map<String, Object> deleteTeacher(String teaNum);
 
+    /**
+     * 查询教师通过属性
+     * @param teacher 入参
+     * @return 返回值
+     */
+    Map<String, Object> queryTeaByColumn(Map<String, Object> teacher);
+
 }

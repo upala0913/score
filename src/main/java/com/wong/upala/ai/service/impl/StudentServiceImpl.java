@@ -102,13 +102,13 @@ public class StudentServiceImpl implements StudentService {
 	 * 删除数据
 	 * @param stuNum 入参
 	 */
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void deleteStudent(String stuNum) {
 		try {
 			studentMapper.deleteStudent(stuNum);
 		}catch(Exception e) {
-			log.error("删除失败；{}", e);
+			log.error("删除失败；{}", e.getMessage());
 		}
 	}
 
@@ -132,7 +132,7 @@ public class StudentServiceImpl implements StudentService {
 				resultMap.put("code", 0);
 			}
 		} catch (Exception e) {
-			log.error("修改学生信息失败！{}", e);
+			log.error("修改学生信息失败！{}", e.getMessage());
 			resultMap.put("code", -1);
 		}
 		return resultMap;

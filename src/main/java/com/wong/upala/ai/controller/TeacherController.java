@@ -94,4 +94,18 @@ public class TeacherController {
         return resMap;
     }
 
+    /**
+     * 查询教师信息数据通过属性
+     * @param param 入参
+     * @return 返回值
+     */
+    @RequestMapping(value = "/queryTeaByColumn", method = RequestMethod.POST)
+    public Map<String, Object> queryTeaByColumn(@RequestBody String param) {
+        log.info("参数信息：{}", param);
+        Map<String, Object> mapByJson = CommUtils.getMapByJson(param);
+        Map<String, Object> resMap = teacherService.queryTeaByColumn(mapByJson);
+        log.info("查询信息：{}", resMap);
+        return resMap;
+    }
+
 }

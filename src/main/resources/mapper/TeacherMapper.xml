@@ -5,7 +5,7 @@
 
     <!-- resultMap -->
     <resultMap id="resTeaMap" type="com.wong.upala.ai.entity.Teacher" >
-        <id column="tea_id" property="teaId" jdbcType="INTEGER" javaType="int" />
+        <id column="tea_id" property="teaId" jdbcType="INTEGER" javaType="Integer" />
         <result column="tea_name" property="teaName" jdbcType="VARCHAR" javaType="String" />
         <result column="tea_num" property="teaNum" jdbcType="VARCHAR" javaType="String" />
         <result column="tea_sex" property="teaSex" jdbcType="VARCHAR" javaType="String" />
@@ -19,7 +19,7 @@
 
     <!-- parameterMap -->
     <parameterMap id="parTeaMap" type="com.wong.upala.ai.entity.Teacher" >
-        <parameter property="teaId" jdbcType="INTEGER" javaType="int" />
+        <parameter property="teaId" jdbcType="INTEGER" javaType="Integer" />
         <parameter property="teaName" jdbcType="VARCHAR" javaType="String" />
         <parameter property="teaNum" jdbcType="VARCHAR" javaType="String" />
         <parameter property="teaSex" jdbcType="VARCHAR" javaType="String" />
@@ -143,5 +143,27 @@
             tea_num = #{teaNum}
         </if>
     </delete>
+
+    <!-- 查询教师通过属性 -->
+    <select id="queryTeaByColumn" parameterType="String" resultMap="resTeaMap" >
+        SELECT * FROM teacher t
+        <where>
+            <if test="teaNum != null and teaNum != ''" >
+                t.tea_num = #{teaNum}
+            </if>
+            <if test="teaName != null and teaName != ''" >
+                AND t.tea_name = #{teaName}
+            </if>
+            <if test="teaPhone != null and teaPhone != ''" >
+                AND t.tea_phone = #{teaPhone}
+            </if>
+            <if test="teaQQ != null and teaQQ != ''" >
+                AND t.tea_qq = #{teaQQ}
+            </if>
+            <if test="teaPosition != null and teaPosition != ''" >
+                AND t.tea_position = #{teaPosition}
+            </if>
+        </where>
+    </select>
 
 </mapper>

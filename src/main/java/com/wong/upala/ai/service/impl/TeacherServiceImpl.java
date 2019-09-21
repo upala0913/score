@@ -1,17 +1,13 @@
 package com.wong.upala.ai.service.impl;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.wong.upala.ai.entity.Teacher;
 import com.wong.upala.ai.mapper.TeacherMapper;
 import com.wong.upala.ai.service.TeacherService;
 import com.wong.upala.ai.utils.CommUtils;
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +22,6 @@ import java.util.Map;
 @Service
 @Log4j2
 public class TeacherServiceImpl implements TeacherService {
-
 
     @Autowired
     private TeacherMapper teacherMapper;
@@ -130,6 +125,31 @@ public class TeacherServiceImpl implements TeacherService {
         if (!CommUtils.isEmpty(teacher)) {
             resultMap.put("status", "true");
             resultMap.put("message", "delete fail");
+        }
+        return resultMap;
+    }
+
+    /**
+     * 查询教师通过属性
+     * @param teacher 入参
+     * @return 返回值
+     */
+    @Override
+    public Map<String, Object> queryTeaByColumn(Map<String, Object> teacher) {
+        Map<String, Object> resultMap = new HashMap<>();
+        log.info("参数信息：{}", teacher);
+		String teaNum = (String) teacher.get("teaNum");
+		String teaName = (String) teacher.get("teaName");
+		String teaPhone = (String) teacher.get("teaPhone");
+		String teaQQ = (String) teacher.get("teaQQ");
+		String teaPosition = (String) teacher.get("teaPosition");
+		List<Teacher> teachers = teacherMapper.queryTeaByColumn(teaNum, teaName, teaPhone, teaQQ, teaPosition);
+        log.info("查询数据信息：{}", teachers);
+        resultMap.put("status", "true");
+        resultMap.put("message", teachers);
+        if (null == teachers || teachers.size() == 0) {
+            resultMap.put("status", "true");
+            resultMap.put("message", "query data is empty!!!");
         }
         return resultMap;
     }

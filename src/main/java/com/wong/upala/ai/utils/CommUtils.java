@@ -73,7 +73,7 @@ public class CommUtils {
 	}
 
 	/**
-	 * 单个子付出啊你的转换
+	 * 单个字符串的转换
 	 * @param json 入参
 	 * @return 返回值
 	 */
@@ -82,6 +82,18 @@ public class CommUtils {
 		JSONObject jsonObject = JSONObject.parseObject(json);
 		map.putAll(jsonObject);
 		return (String) map.get("teaNum");
+	}
+
+	/**
+	 * 将字符串转换为map集合
+	 * @param json 入参
+	 * @return 返回值
+	 */
+	public static Map<String, Object> getMapByJson(String json) {
+		Map<String, Object> map = new HashMap<>();
+		JSONObject object = JSONObject.parseObject(json);
+		map.putAll(object);
+		return map;
 	}
 
 }
