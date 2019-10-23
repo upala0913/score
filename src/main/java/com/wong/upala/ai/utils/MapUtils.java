@@ -18,7 +18,6 @@ import java.util.Map;
 @Log4j2
 public class MapUtils {
 
-
 	/**
 	 * 获取验证码
 	 * @return 返回值

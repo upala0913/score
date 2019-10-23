@@ -144,12 +144,13 @@ public class TeacherServiceImpl implements TeacherService {
 		String teaQQ = (String) teacher.get("teaQQ");
 		String teaPosition = (String) teacher.get("teaPosition");
 		List<Teacher> teachers = teacherMapper.queryTeaByColumn(teaNum, teaName, teaPhone, teaQQ, teaPosition);
-        log.info("查询数据信息：{}", teachers);
-        resultMap.put("status", "true");
-        resultMap.put("message", teachers);
+		Integer total = teacherMapper.getTotalByColumn(teaNum, teaName, teaPhone, teaQQ, teaPosition);
+		log.info("查询数据信息：{}", teachers);
+        resultMap.put("total", total);
+        resultMap.put("rows", teachers);
         if (null == teachers || teachers.size() == 0) {
-            resultMap.put("status", "true");
-            resultMap.put("message", "query data is empty!!!");
+            resultMap.put("total", 0);
+            resultMap.put("rows", "");
         }
         return resultMap;
     }

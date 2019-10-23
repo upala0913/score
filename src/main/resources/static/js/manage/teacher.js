@@ -81,7 +81,7 @@ $(function () {
         }, {
             text: "职位：<select id='searchTeaPosition' class='easyui-combobox' name='subject' style='width:" +
                         "140px; height: 20px; text-align: center;' >\n" +
-                            "<option>-- 请选择 --</option>\n" +
+                            "<option value='' >-- 请选择 --</option>\n" +
                             "<option value='教师' >教师</option>\n" +
                             "<option value='班主任' >班主任</option>\n" +
                             "<option value='系主任' >系主任</option>\n" +
@@ -105,14 +105,14 @@ $(function () {
                             data: data,
                             dataType: "json",
                             success: function (data) {
-                                var status = data.status;
-                                var message = data.message;
-                                if ("true" === status) {
-                                    $("#teaListWin").window("open");
-                                    success(message);
-                                } else {
-                                    $.messager.alert("信息", "查询数据为空！", "error");
-                                }
+                                $("#teaListWin").window("open");
+                                success(data);
+                                // var status = data.status;
+                                // var message = data.message;
+                                // if ("true" === status) {
+                                // } else {
+                                //     $.messager.alert("信息", "查询数据为空！", "error");
+                                // }
                             }
                         });
                     },
@@ -157,7 +157,7 @@ $(function () {
                 $("#searchTeaName").textbox("setValue", "");
                 $("#searchTeaMobile").textbox("setValue", "");
                 $("#searchTeaQQ").textbox("setValue", "");
-                $("#searchTeaPosition").textbox("setValue", "-- 请选择 --");
+                $("#searchTeaPosition").textbox("setValue", "");
             }
         }]
     });

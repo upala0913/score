@@ -66,4 +66,17 @@ public interface TeacherMapper {
 								   @Param("teaPhone")String teaPhone, @Param("teaQQ")String teaQQ,
 								   @Param("teaPosition")String teaPosition);
 
+	/**
+	 * 获取记录数通过属性
+	 * @param teaNum 入参
+	 * @param teaName 入参
+	 * @param teaPhone 入参
+	 * @param teaQQ 入参
+	 * @param teaPosition 入参
+	 * @return 返回值
+	 */
+	Integer getTotalByColumn(@Param("teaNum")String teaNum, @Param("teaName")String teaName,
+							 @Param("teaPhone")String teaPhone, @Param("teaQQ")String teaQQ,
+							 @Param("teaPosition")String teaPosition);
+
 }
