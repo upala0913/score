@@ -28,7 +28,7 @@
     </select>
 
     <!-- 查询总数 -->
-    <select id="getTotal" resultType="int">
+    <select id="getTotal" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM student
     </select>
 

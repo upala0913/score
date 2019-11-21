@@ -1,6 +1,7 @@
 package com.wong.upala.ai.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
  *****************************/
 
 @Data
+@ToString
 public class Student {
 
 	private Integer id;
